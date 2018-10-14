@@ -1,0 +1,17 @@
+---
+- name: laravel
+  hosts: all
+  become: yes
+  gather_facts: False
+
+- hosts: localhost
+
+  roles:
+  - load-vars
+  - common
+  - server
+  - php
+  - mysql
+  - laravel
+  - passport
+  - xdebug

@@ -1,0 +1,9 @@
+*.retry
+.vagrant
+.idea
+*log*
+.log
+.vault_pass
+*local*.yml
+*local.yml
+local.yml

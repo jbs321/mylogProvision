@@ -1,0 +1,24 @@
+---
+- name: Add PHP 7.2 PPA
+  apt_repository:
+    repo: "ppa:ondrej/php"
+    update_cache: yes
+
+- name: Install PHP 7.2
+  apt:
+    name: "{{ php_extensions }}"
+    state: present
+    force: yes
+
+- name: Start php7.2-fpm service
+  service:
+    name: php7.2-fpm
+    state: started
+    enabled: true
+
+- name: PHP configuration file
+  template:
+    src: php.ini.j2
+    dest: /etc/php/7.2/fpm/php.ini
+  notify: reload php7.2-fpm
+  become: true
